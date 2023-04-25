@@ -6,6 +6,7 @@ import { FiHome, FiPlay, FiRefreshCcw } from 'react-icons/fi'
 import { getDetector, handleNewFrame, initTensorflow } from '../functions/tensorflow'
 import { compareAngles } from '../functions/scoring'
 import { ScoreText } from '../components/scoreText'
+import { backendUrl } from '../store'
 
 export default function Dance() {
   const { id } = useParams()
@@ -31,7 +32,7 @@ export default function Dance() {
   const lastScored = useRef(0)
 
   const fetchDance = async () => {
-    const danceFetch = await axios.get('http://localhost:5500/dances/' + id)
+    const danceFetch = await axios.get(backendUrl + '/dances/' + id)
     dance.current = danceFetch.data
   }
 

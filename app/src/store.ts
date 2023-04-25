@@ -15,11 +15,13 @@ interface DanceStore {
   fetchDances: () => Promise<void>
 }
 
+export const backendUrl = process.env.VERCEL ? 'https://dance.oracle.ulassekerci.com' : 'http://localhost:5500'
+
 export const useDanceStore = create<DanceStore>((set) => ({
   dances: [],
   isFetched: false,
   fetchDances: async () => {
-    const req = await axios.get('http://localhost:5500/dances')
+    const req = await axios.get(backendUrl + '/dances')
     const dances = req.data
     set(() => ({ dances: dances, isFetched: true }))
   },
