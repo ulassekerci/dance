@@ -35,7 +35,11 @@ export default function Home() {
               {dances.map((dance) => (
                 <div
                   className='w-72 flex flex-col cursor-pointer'
-                  onClick={() => navigate(`/setup/${dance.id}`)}
+                  onClick={() => {
+                    sessionStorage.setItem('danceName', dance.name)
+                    sessionStorage.setItem('artistName', dance.artist)
+                    navigate(`/setup/${dance.id}`)
+                  }}
                   key={dance.id}
                 >
                   <span className='font-semibold text-lg pb-1'>{dance.name}</span>

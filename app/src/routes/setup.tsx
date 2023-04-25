@@ -80,8 +80,8 @@ export default function Setup() {
           <FiArrowLeft size={48} />
         </div>
         <div className='flex flex-col pt-2 gap-1'>
-          <span className='text-4xl font-bold'>Dynamite</span>
-          <span className='text-xl font-semibold text-right'>BTS</span>
+          <span className='text-4xl font-bold'>{sessionStorage.getItem('danceName')}</span>
+          <span className='text-xl font-semibold text-right'>{sessionStorage.getItem('artistName')}</span>
         </div>
       </div>
       <div className='flex justify-end items-center'>
