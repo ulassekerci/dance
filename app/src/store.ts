@@ -15,7 +15,8 @@ interface DanceStore {
   fetchDances: () => Promise<void>
 }
 
-export const backendUrl = process.env.VERCEL ? 'https://dance.oracle.ulassekerci.com' : 'http://localhost:5500'
+export const backendUrl =
+  location.hostname !== 'localhost' ? 'https://dance.oracle.ulassekerci.com' : 'http://localhost:5500'
 
 export const useDanceStore = create<DanceStore>((set) => ({
   dances: [],
