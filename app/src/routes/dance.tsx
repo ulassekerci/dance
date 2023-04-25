@@ -1,4 +1,3 @@
-import { Dance } from '@prisma/client'
 import axios from 'axios'
 import { ReactNode, useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -18,6 +17,15 @@ export default function Dance() {
   const webcamRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const webcamStream = useRef<MediaStream>()
+
+  type Dance = {
+    id: number
+    name: string
+    artist: string
+    stars: number
+    motionData: string | null
+    order: number
+  }
 
   const dance = useRef<Dance>()
   const lastScored = useRef(0)
