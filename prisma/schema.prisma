@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Dance {
+  id         Int     @id @default(autoincrement())
+  name       String  @unique @db.VarChar(255)
+  artist     String  @db.VarChar(255)
+  stars      Int     @default(0)
+  motionData String? @db.Text
+  order      Int     @default(autoincrement())
+}
