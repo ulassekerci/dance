@@ -7,6 +7,7 @@ interface Dance {
   artist: string
   stars: number
   motionData: string
+  order: number
 }
 
 interface DanceStore {
@@ -23,7 +24,7 @@ export const useDanceStore = create<DanceStore>((set) => ({
   isFetched: false,
   fetchDances: async () => {
     const req = await axios.get(backendUrl + '/dances')
-    const dances = req.data
+    const dances = (req.data as Dance[]).filter((dance) => dance.order)
     set(() => ({ dances: dances, isFetched: true }))
   },
 }))
