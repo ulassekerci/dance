@@ -23,26 +23,26 @@ danceRouter.get('/:id', async (req, res) => {
   }
 })
 
-danceRouter.post('/', async (req, res) => {
-  // if (req.headers.authorization !== 'Bearer 51721') return res.sendStatus(401)
-  try {
-    const newDance = await createDance(req.body)
-    res.status(201).send(newDance)
-  } catch (error) {
-    handleError(res, error)
-  }
-})
+// danceRouter.post('/', async (req, res) => {
+//   if (req.headers.authorization !== 'Bearer ' + process.env.SECRET) return res.sendStatus(401)
+//   try {
+//     const newDance = await createDance(req.body)
+//     res.status(201).send(newDance)
+//   } catch (error) {
+//     handleError(res, error)
+//   }
+// })
 
-danceRouter.patch('/:id', async (req, res) => {
-  // if (req.headers.authorization !== 'Bearer 51721') return res.sendStatus(401)
-  try {
-    const id = z.number().parse(Number(req.params.id))
-    const updatedDance = await updateDance(id, req.body)
-    res.send(updatedDance)
-  } catch (error) {
-    handleError(res, error)
-  }
-})
+// danceRouter.patch('/:id', async (req, res) => {
+//   if (req.headers.authorization !== 'Bearer ' + process.env.SECRET) return res.sendStatus(401)
+//   try {
+//     const id = z.number().parse(Number(req.params.id))
+//     const updatedDance = await updateDance(id, req.body)
+//     res.send(updatedDance)
+//   } catch (error) {
+//     handleError(res, error)
+//   }
+// })
 
 const handleError = (res: any, error: any) => {
   if (error instanceof ZodError) {
