@@ -74,10 +74,20 @@ export default function Dance() {
     lastScored.current = time
     if (score) {
       setScore(score)
+      storeScores(score)
       setTimeout(() => {
         setScore(null)
       }, 1000)
     }
+  }
+
+  const storeScores = (newScore: 'Perfect' | 'Super' | 'Good' | 'Ok' | 'X') => {
+    const scores = JSON.parse(sessionStorage.getItem('scores') || '[]') as number[]
+    const newScores = [
+      ...scores,
+      newScore === 'Perfect' ? 4 : newScore === 'Super' ? 3 : newScore === 'Good' ? 2 : newScore === 'Ok' ? 1 : 0,
+    ]
+    sessionStorage.setItem('scores', JSON.stringify(newScores))
   }
 
   const stopWebcam = () => {
@@ -107,7 +117,7 @@ export default function Dance() {
     if (!dance || !tfReady || paused) return
     if (!videoRef.current) return
     videoRef.current.play()
-    videoRef.current.addEventListener('ended', () => handleNavigate('/'))
+    videoRef.current.addEventListener('ended', () => handleNavigate('/score'))
   }, [dance, tfReady])
 
   return (

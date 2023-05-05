@@ -38,6 +38,7 @@ export default function Home() {
                   onClick={() => {
                     sessionStorage.setItem('danceName', dance.name)
                     sessionStorage.setItem('artistName', dance.artist)
+                    sessionStorage.setItem('danceId', dance.id.toString())
                     navigate(`/setup/${dance.id}`)
                   }}
                   key={dance.id}

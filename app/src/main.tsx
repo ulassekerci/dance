@@ -7,6 +7,7 @@ import Create from './routes/create'
 import Dance from './routes/dance'
 import Home from './routes/home'
 import Setup from './routes/setup'
+import Score from './routes/score'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/dance/:id',
     element: <Dance />,
+  },
+  {
+    path: '/score',
+    element: <Score />,
   },
 ])
 
