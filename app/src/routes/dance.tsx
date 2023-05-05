@@ -6,7 +6,7 @@ import { FiHome, FiPlay, FiRefreshCcw } from 'react-icons/fi'
 import { getDetector, handleNewFrame, initTensorflow } from '../functions/tensorflow'
 import { compareAngles } from '../functions/scoring'
 import { ScoreText } from '../components/scoreText'
-import { backendUrl } from '../store'
+import { Dance, backendUrl } from '../store'
 
 export default function Dance() {
   const { id } = useParams()
@@ -18,15 +18,6 @@ export default function Dance() {
   const webcamRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const webcamStream = useRef<MediaStream>()
-
-  type Dance = {
-    id: number
-    name: string
-    artist: string
-    stars: number
-    motionData: string | null
-    order: number
-  }
 
   const dance = useRef<Dance>()
   const lastScored = useRef(0)

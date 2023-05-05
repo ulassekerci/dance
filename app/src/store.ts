@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { create } from 'zustand'
 
-interface Dance {
+export interface Dance {
   id: number
   name: string
   artist: string
